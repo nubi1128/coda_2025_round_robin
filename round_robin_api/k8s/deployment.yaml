@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: round-robin-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: round-robin-api
+  template:
+    metadata:
+      labels:
+        app: round-robin-api
+    spec:
+      containers:
+        - name: round-robin-api
+          image: round-robin-api:27
+          ports:
+            - containerPort: 8000

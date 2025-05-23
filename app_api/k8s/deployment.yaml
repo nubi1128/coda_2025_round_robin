@@ -1,0 +1,20 @@
+# app-api-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-api
+  template:
+    metadata:
+      labels:
+        app: app-api
+    spec:
+      containers:
+      - name: app-api
+        image: app-api:2
+        ports:
+        - containerPort: 5000
