@@ -78,3 +78,6 @@ Latency distribution:
 
 
 
+
+
+eval $(minikube docker-env)

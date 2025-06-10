@@ -1,3 +1,5 @@
-flask==2.2.5
-requests==2.31.0
+fastapi==0.110.2
+aiohttp==3.9.5
 gunicorn==21.2.0
+uvicorn[standard]==0.29.0
+redis

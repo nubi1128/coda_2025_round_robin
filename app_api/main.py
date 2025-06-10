@@ -1,8 +1,9 @@
-from flask import Flask, request, jsonify
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/payload', methods=['POST'])
-def echo():
-    data = request.get_json()
-    return jsonify(data), 200
+@app.post("/payload")
+async def echo(request: Request):
+    data = await request.json()
+    return JSONResponse(content=data)
