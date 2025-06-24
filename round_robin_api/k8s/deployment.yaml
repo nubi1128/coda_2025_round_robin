@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: round-robin-api
 spec:
-  replicas: 4
+  replicas: 5
   selector:
     matchLabels:
       app: round-robin-api
@@ -14,6 +14,11 @@ spec:
     spec:
       containers:
         - name: round-robin-api
-          image: round-robin-api:17
+          image: round-robin-api:4
           ports:
             - containerPort: 8000
+          resources:
+            requests:
+              cpu: "200m"
+            limits:
+              cpu: "550m"

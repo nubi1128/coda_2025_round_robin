@@ -1,11 +1,6 @@
-<<<<<<< Updated upstream
-from flask import Flask, request, jsonify
-import requests
-=======
 from fastapi import FastAPI, Request
 import aiohttp
 import asyncio
->>>>>>> Stashed changes
 import socket
 import logging
 import os
@@ -105,9 +100,4 @@ async def route(request: Request):
         except Exception as e:
             logger.error(f"Error calling backend [{target}]: {repr(e)}")
             continue
-
-<<<<<<< Updated upstream
-    return jsonify({"error": "All backend servers failed"}), 503
-=======
     return {"error": "All backend servers failed"}, 503
->>>>>>> Stashed changes

@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: app-api
 spec:
-  replicas: 12
+  replicas: 9
   selector:
     matchLabels:
       app: app-api
@@ -18,3 +18,10 @@ spec:
         image: fast-app-api:3
         ports:
         - containerPort: 5000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "64Mi"
+          limits:
+            cpu: "250m"
+            memory: "128Mi"

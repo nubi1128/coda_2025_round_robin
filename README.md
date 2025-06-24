@@ -28,56 +28,43 @@ Your request will be forwarded to the next available `/payload` endpoint on a ba
 
 ## stress-tested with `hey` with one single round robin server and three app server
 ```
-bunnyli@Bunnys-MacBook-Pro coda_2025_round_robin % hey -n 50000 -c 100 \
+bunnyli@MacBook-Air ~ % hey -n 100000 -c 200 \
     -m POST \
     -H "Content-Type: application/json" \
     -d '{"game":"pokemon","gamerID":"Nova"}' \
-    http://127.0.0.1:61957/route
+    http://127.0.0.1:50024/route
 
 
 Summary:
-  Total:	193.6459 secs
-  Slowest:	0.8678 secs
-  Fastest:	0.0403 secs
-  Average:	0.3868 secs
-  Requests/sec:	258.2032
+  Total:	80.1517 secs
+  Slowest:	1.1130 secs
+  Fastest:	0.0013 secs
+  Average:	0.1577 secs
+  Requests/sec:	1247.6338
   
-  Total data:	1800000 bytes
-  Size/request:	36 bytes
+  Total data:	3500000 bytes
+  Size/request:	35 bytes
 
 Response time histogram:
-  0.040 [1]	|
-  0.123 [36]	|
-  0.206 [38]	|
-  0.289 [60]	|
-  0.371 [17488]	|■■■■■■■■■■■■■■■■■■■■■■■■■
-  0.454 [27905]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-  0.537 [3327]	|■■■■■
-  0.620 [845]	|■
-  0.702 [237]	|
-  0.785 [24]	|
-  0.868 [39]	|
-
-
-Latency distribution:
-  10% in 0.3245 secs
-  25% in 0.3502 secs
-  50% in 0.3861 secs
-  75% in 0.4058 secs
-  90% in 0.4471 secs
-  95% in 0.4800 secs
-  99% in 0.6002 secs
+  0.001 [1]	|
+  0.112 [49827]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.224 [36945]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.335 [9771]	|■■■■■■■■
+  0.446 [2427]	|■■
+  0.557 [679]	|■
+  0.668 [243]	|
+  0.780 [51]	|
+  0.891 [16]	|
+  1.002 [32]	|
+  1.113 [8]	|
 ```
 
 
-## Future Enhancements
 
-- [ ] Replace in-memory state with Redis INCR for distributed routers
-- [ ] Switch to `FastAPI + httpx` for async handling
-- [ ] Add unit tests and performance benchmarks
 
 
 
 
 
 eval $(minikube docker-env)
+minikube service round-robin-api --url
